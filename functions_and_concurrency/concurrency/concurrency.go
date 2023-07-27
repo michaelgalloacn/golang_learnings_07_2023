@@ -27,7 +27,7 @@ func basicConcurrency() {
 	go printSlow()
 	time.Sleep(20 * time.Millisecond)
 	fmt.Println("I am ahead of print slow")
-	time.Sleep(100 * time.Millisecond)
+	// time.Sleep(100 * time.Millisecond)
 }
 
 func concurrencyWithChannels() {
@@ -39,10 +39,18 @@ func concurrencyWithChannels() {
 }
 
 func bufferingConncurrency() {
-	// messages := make(chan string)
-	messages := make(chan string, 1)
+	// If given no arguments the channel is unbuffered
+	// This means that adding a value to a channel is blocking and will only be unblocked when another goroutine removes that value
+	messages := make(chan string)
 
+	// The second argument to the make command for a channel is its buffering capacity
+	// messages := make(chan string, 1)
+
+	// This will cause the program to crash if the channel is not given a buffering capacity
 	messages <- "Hello world"
+
+	// A second value added into the channel will cause the program to crash if the buffering capacity is only 1
+	// messages <- "Hello world"
 	fmt.Println(<-messages)
 
 }
