@@ -12,7 +12,7 @@ type aliasedStringMessage = string
 func main() {
 
 	// CONST keyword for immutable values, constants
-	const constHelloMessage string = "Hello World"
+	const constHelloMessage = "Hello World"
 	fmt.Println(constHelloMessage)
 	// Trying to update a const will cause a compilation error
 	// constHelloMessage = "Hello world updated"
@@ -56,9 +56,11 @@ func main() {
 	var aliasedMessageAsString string = "I am a string under the hood"
 	fmt.Println(aliasedMessage == aliasedMessageAsString)
 
+	// While type annotations are optional, a wrong one will prevent compilation
 	// var wrong_annotation int = "I have the wrong type annotation and will not compile"
 	// fmt.Println(wrong_annotation)
 
+	// Unused variables will also prevent compilation
 	// var unused_string = "I am unused and by default this will stop execution"
 
 }
